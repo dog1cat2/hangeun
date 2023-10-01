@@ -19,28 +19,6 @@ class Scene extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              // aosstatusbaroPo (80:12204)
-              padding:
-                  EdgeInsets.fromLTRB(298 * fem, 7 * fem, 16 * fem, 7 * fem),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-              ),
-              child: Align(
-                // combinedshapeseZ (I80:12204;0:200)
-                alignment: Alignment.centerRight,
-                child: SizedBox(
-                  width: 46 * fem,
-                  height: 10 * fem,
-                  child: Image.asset(
-                    'assets/page-1/images/combined-shape-cim.png',
-                    width: 46 * fem,
-                    height: 10 * fem,
-                  ),
-                ),
-              ),
-            ),
-            Container(
               // componentsappbarstopaYy (80:12203)
               padding: EdgeInsets.fromLTRB(0 * fem, 16 * fem, 0 * fem, 0 * fem),
               width: double.infinity,
@@ -60,18 +38,6 @@ class Scene extends StatelessWidget {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          // iconicarrowbackkbs (I80:12203;2:441)
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 120.5 * fem, 5 * fem),
-                          width: 16 * fem,
-                          height: 14 * fem,
-                          child: Image.asset(
-                            'assets/page-1/images/icon-ic-arrow-back.png',
-                            width: 16 * fem,
-                            height: 14 * fem,
-                          ),
-                        ),
                         Text(
                           // pagetitleJ17 (I80:12203;2:440)
                           '판매 목록',
@@ -228,12 +194,11 @@ class Scene extends StatelessWidget {
               ),
             ),
             Container(
-              // frame19QNu (80:12205)
-              margin: EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 179 * fem),
+              // autogrouptb1bBNH (3ckRd9a2L9PzBu75HnTb1B)
               width: double.infinity,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+              height: MediaQuery.of(context).size.height - 235,
+              child: ListView(
+                children: <Widget>[
                   Container(
                     // selllistiuP (80:12206)
                     padding: EdgeInsets.fromLTRB(
@@ -273,7 +238,7 @@ class Scene extends StatelessWidget {
                                 Container(
                                   // textbbo (I80:12206;68:975)
                                   margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 3 * fem, 127 * fem, 0 * fem),
+                                      0 * fem, 3 * fem, 110 * fem, 0 * fem),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -379,7 +344,7 @@ class Scene extends StatelessWidget {
                                 Container(
                                   // textsUm (I80:12207;68:975)
                                   margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 3 * fem, 127 * fem, 0 * fem),
+                                      0 * fem, 3 * fem, 110 * fem, 0 * fem),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -485,7 +450,7 @@ class Scene extends StatelessWidget {
                                 Container(
                                   // textRAq (I80:12208;68:975)
                                   margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 3 * fem, 127 * fem, 0 * fem),
+                                      0 * fem, 3 * fem, 110 * fem, 0 * fem),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -591,7 +556,7 @@ class Scene extends StatelessWidget {
                                 Container(
                                   // textMVj (I80:12209;68:975)
                                   margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 3 * fem, 127 * fem, 0 * fem),
+                                      0 * fem, 3 * fem, 110 * fem, 0 * fem),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -655,259 +620,103 @@ class Scene extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Container(
-              // autogrouptb1bBNH (3ckRd9a2L9PzBu75HnTb1B)
-              width: double.infinity,
-              height: 97 * fem,
-              child: Stack(
-                children: [
-                  Positioned(
-                    // aosnavigationbar82d (80:12201)
-                    left: 0 * fem,
-                    top: 57 * fem,
-                    child: Align(
-                      child: SizedBox(
-                        width: 360 * fem,
-                        height: 40 * fem,
-                        child: Image.asset(
-                          'assets/page-1/images/aos-navigation-bar.png',
-                          width: 360 * fem,
-                          height: 40 * fem,
-                        ),
-                      ),
-                    ),
+                  SizedBox(
+                    height: 7 * fem,
                   ),
-                  Positioned(
-                    // componentsbottomnavigationtab4 (I115:12593;19:1506)
-                    left: 0 * fem,
-                    top: 0 * fem,
+                  Container(
+                    // selllistiuP (80:12206)
+                    padding: EdgeInsets.fromLTRB(
+                        10 * fem, 0 * fem, 11 * fem, 0 * fem),
+                    width: double.infinity,
+                    height: 83 * fem,
                     child: Container(
-                      width: 360 * fem,
-                      height: 58 * fem,
-                      child: Column(
+                      // autogrouphbszeHF (3ckTabJzq9KkJCaSesHBSZ)
+                      width: double.infinity,
+                      height: 76.32 * fem,
+                      child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            // underlinevDP (I115:12593;19:1506;19:1496)
-                            width: double.infinity,
-                            height: 1 * fem,
+                            // rectangle9msf (I80:12206;68:974)
+                            width: 90 * fem,
+                            height: 76.32 * fem,
                             decoration: BoxDecoration(
-                              color: Color(0xffe5edf3),
+                              borderRadius: BorderRadius.circular(8 * fem),
+                              color: Color(0xffc4c4c4),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                  'assets/page-1/images/rectangle-9-bg-MGd.png',
+                                ),
+                              ),
                             ),
                           ),
                           Container(
-                            // autogroupkon9sPX (3ckRviu5CyD2P1ZR5bKoN9)
-                            width: double.infinity,
-                            height: 57 * fem,
-                            child: Stack(
+                            // autogroupxwuqsfo (3ckThLckpKA3Me9NRwXWUq)
+                            padding: EdgeInsets.fromLTRB(
+                                10 * fem, 5 * fem, 0 * fem, 7.32 * fem),
+                            height: double.infinity,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Positioned(
-                                  // rectangle2ony (I115:12593;19:1506;19:1495)
-                                  left: 0 * fem,
-                                  top: 0 * fem,
-                                  child: Align(
-                                    child: SizedBox(
-                                      width: 360 * fem,
-                                      height: 56 * fem,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffffffff),
+                                Container(
+                                  // textbbo (I80:12206;68:975)
+                                  margin: EdgeInsets.fromLTRB(
+                                      0 * fem, 3 * fem, 110 * fem, 0 * fem),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        // 8Lq (I80:12206;68:976)
+                                        '아이폰 프로 (미개봉)',
+                                        style: SafeGoogleFont(
+                                          'Noto Sans',
+                                          fontSize: 12 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5 * ffem / fem,
+                                          color: Color(0xff000000),
                                         ),
                                       ),
-                                    ),
+                                      SizedBox(
+                                        height: 6 * fem,
+                                      ),
+                                      Text(
+                                        // pns202309153Cu (I80:12206;68:977)
+                                        'PNS본사(증미) · 2023.09.15',
+                                        style: SafeGoogleFont(
+                                          'Noto Sans',
+                                          fontSize: 10 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.3625 * ffem / fem,
+                                          color: Color(0xff4a4e55),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 6 * fem,
+                                      ),
+                                      Text(
+                                        // w3P (I80:12206;80:11887)
+                                        '1,000,000원',
+                                        style: SafeGoogleFont(
+                                          'Noto Sans',
+                                          fontSize: 12 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.3625 * ffem / fem,
+                                          color: Color(0xff221f1f),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                                Positioned(
-                                  // componentsbottomnavigationdefa (I115:12593;19:1506;19:1497)
-                                  left: 90 * fem,
-                                  top: 0 * fem,
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(34.97 * fem,
-                                        9.98 * fem, 34.93 * fem, 5 * fem),
-                                    width: 90 * fem,
-                                    height: 56 * fem,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          // iconicmessagecircleoutlinebiq (I115:12593;19:1506;19:1497;19:1508)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 3.95 * fem),
-                                          width: 20.1 * fem,
-                                          height: 20.07 * fem,
-                                          child: Image.asset(
-                                            'assets/page-1/images/icon-ic-message-circle-outline.png',
-                                            width: 20.1 * fem,
-                                            height: 20.07 * fem,
-                                          ),
-                                        ),
-                                        Container(
-                                          // 6vV (I115:12593;19:1506;19:1497;19:1509)
-                                          margin: EdgeInsets.fromLTRB(
-                                              0.95 * fem,
-                                              0 * fem,
-                                              0 * fem,
-                                              0 * fem),
-                                          child: Text(
-                                            '채팅',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Noto Sans',
-                                              fontSize: 12 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.3625 * ffem / fem,
-                                              color: Color(0xff6c7278),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  // componentsbottomnavigationdefa (I115:12593;19:1506;19:1498)
-                                  left: 180 * fem,
-                                  top: 0 * fem,
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        35 * fem, 12 * fem, 35 * fem, 5 * fem),
-                                    width: 90 * fem,
-                                    height: 56 * fem,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          // iconicheartVSq (I115:12593;19:1506;19:1498;19:1508)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 5 * fem),
-                                          width: 20 * fem,
-                                          height: 17 * fem,
-                                          child: Image.asset(
-                                            'assets/page-1/images/icon-ic-heart.png',
-                                            width: 20 * fem,
-                                            height: 17 * fem,
-                                          ),
-                                        ),
-                                        Container(
-                                          // 1AH (I115:12593;19:1506;19:1498;19:1509)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 0 * fem),
-                                          child: Text(
-                                            '찜',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Noto Sans',
-                                              fontSize: 12 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.3625 * ffem / fem,
-                                              color: Color(0xff6c7278),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  // componentsbottomnavigationdefa (I115:12593;19:1506;19:1499;19:1511)
-                                  left: 270 * fem,
-                                  top: 0 * fem,
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        33 * fem, 8 * fem, 33 * fem, 5 * fem),
-                                    width: 90 * fem,
-                                    height: 56 * fem,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          // accountCVf (I115:12593;19:1506;19:1499;19:1511;19:1508;23:2151)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 2 * fem),
-                                          width: 24 * fem,
-                                          height: 24 * fem,
-                                          child: Image.asset(
-                                            'assets/page-1/images/account.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                        Text(
-                                          // vRf (I115:12593;19:1506;19:1499;19:1511;19:1509)
-                                          '내정보',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Noto Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.3625 * ffem / fem,
-                                            color: Color(0xffea1818),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  // componentsbottomnavigationdefa (I115:12593;19:1506;19:1500)
-                                  left: 8 * fem,
-                                  top: 1 * fem,
-                                  child: Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        36 * fem, 10 * fem, 16 * fem, 5 * fem),
-                                    width: 70 * fem,
-                                    height: 56 * fem,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xffffffff),
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          // iconichomewrZ (I115:12593;19:1506;19:1500;19:1508)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 4 * fem),
-                                          width: 18 * fem,
-                                          height: 20 * fem,
-                                          child: Image.asset(
-                                            'assets/page-1/images/icon-ic-home.png',
-                                            width: 18 * fem,
-                                            height: 20 * fem,
-                                          ),
-                                        ),
-                                        Container(
-                                          // fGm (I115:12593;19:1506;19:1500;19:1509)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 0 * fem),
-                                          child: Text(
-                                            '홈',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Noto Sans',
-                                              fontSize: 12 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.3625 * ffem / fem,
-                                              color: Color(0xff6c7278),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                Container(
+                                  // iconicmore5QV (I80:12206;80:12731)
+                                  width: 3 * fem,
+                                  height: 15 * fem,
+                                  child: Image.asset(
+                                    'assets/page-1/images/icon-ic-more-Vkd.png',
+                                    width: 3 * fem,
+                                    height: 15 * fem,
                                   ),
                                 ),
                               ],
@@ -920,6 +729,31 @@ class Scene extends StatelessWidget {
                 ],
               ),
             ),
+            // Container(
+            //   // autogrouptb1bBNH (3ckRd9a2L9PzBu75HnTb1B)
+            //   width: double.infinity,
+            //   height: 97 * fem,
+            //   child: Stack(
+            //     children: [
+            //       Positioned(
+            //         // aosnavigationbar82d (80:12201)
+            //         left: 0 * fem,
+            //         top: 57 * fem,
+            //         child: Align(
+            //           child: SizedBox(
+            //             width: 360 * fem,
+            //             height: 40 * fem,
+            //             child: Image.asset(
+            //               'assets/page-1/images/aos-navigation-bar.png',
+            //               width: 360 * fem,
+            //               height: 40 * fem,
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),
