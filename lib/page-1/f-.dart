@@ -4,6 +4,8 @@ import 'package:myapp/utils.dart';
 import '/src/components/item_for_sale.dart';
 
 class Scene extends StatelessWidget {
+  const Scene({super.key});
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -34,9 +36,9 @@ class Scene extends StatelessWidget {
                   Container(
                     // autogroupfrzs4yw (3ckTBgoVnx928fdDnEfRZs)
                     margin: EdgeInsets.fromLTRB(
-                        20 * fem, 0 * fem, 16 * fem, 12 * fem),
-                    padding: EdgeInsets.fromLTRB(
-                        0 * fem, 2 * fem, 139.5 * fem, 0 * fem),
+                        159 * fem, 0 * fem, 16 * fem, 12 * fem),
+                    //EdgeInsets.fromLTRB(
+                    //    20 * fem, 0 * fem, 16 * fem, 12 * fem),
                     width: double.infinity,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -199,7 +201,7 @@ class Scene extends StatelessWidget {
             SizedBox(
               // autogrouptb1bBNH (3ckRd9a2L9PzBu75HnTb1B)
               width: double.infinity,
-              height: MediaQuery.of(context).size.height - 235,
+              height: MediaQuery.of(context).size.height - 290,
               child: ListView(
                 children: <Widget>[
                   ItemForSale(),

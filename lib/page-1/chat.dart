@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'package:myapp/utils.dart';
 
-class Scene extends StatelessWidget {
+class Chat extends StatelessWidget {
+  const Chat({super.key});
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
