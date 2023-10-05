@@ -28,10 +28,10 @@ samples, guidance on mobile development, and a full API reference.
 
 
 # 기능정의
-
+[상세보기](doc/features.md)
 
 # 화면설계
-<한근>에서는 기획과 화면 설계 및 UI/UX 디자인을 한 번에 하기 위해 클라우드 기반의 UI 디자인 툴인 figma(https://www.figma.com/)를 사용하였습니다.
+<한근>에서는 기획과 화면 설계 및 UI/UX 디자인을 한 번에 하기 위해 클라우드 기반의 UI 디자인 툴인 figma(https://www.figma.com/) 를 사용하였습니다.
 
 [figma 프로젝트 상세보기](https://www.figma.com/file/acVWbYPwHTIuAoKz9xbNKA/%ED%95%9C%EA%B7%BC%EB%AA%A8%EB%B0%94%EC%9D%BCApp?type=design&node-id=0%3A1&mode=design&t=vdy6JljiAoDmHELE-1)
 
