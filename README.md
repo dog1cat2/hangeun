@@ -4,9 +4,12 @@
 안녕하세요. 한(솔)근(처) 서비스입니다.
 <br/>
 <br/>
-# test
-
-A new Flutter project.
+# 프로젝트 시작하기
+```
+프로젝트ROOT> flutter create -t app .
+run emulator
+프로젝트ROOT> flutter run
+```
 
 ## Getting Started
 
