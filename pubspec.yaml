@@ -66,6 +66,7 @@ flutter:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   assets:
+    - assets/images/
     - assets/page-1/images/account.png
     - assets/page-1/images/icon-ic-arrow-back.png
     - assets/page-1/images/icon-ic-home.png
