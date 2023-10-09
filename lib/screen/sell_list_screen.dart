@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
 
-class SellListScreen extends StatelessWidget {
+class SellListScreen extends StatefulWidget {
   const SellListScreen({super.key});
+
+  @override
+  State<SellListScreen> createState() => _SellListState();
+}
+
+class _SellListState  extends State<SellListScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +101,21 @@ class SellListScreen extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => SellItemEditScreen(
+                itemUid: '',
+              ))
+            );
+          });
+        },
+        // foregroundColor: customizations[index].$1,
+        // backgroundColor: customizations[index].$2,
+        // shape: customizations[index].$3,
+        child: const Icon(Icons.add),
+      ),
       body: ListView.separated(
         itemCount: sellListMap.length,
         itemBuilder: (BuildContext context, int index) {
@@ -153,10 +175,11 @@ class SellListScreen extends StatelessWidget {
               foregroundImage: AssetImage('assets/images/rectangle-9-bg-tVP.png'),
             ),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
+              Navigator.of(context).push( MaterialPageRoute(
                 builder: (context) => SellItemScreen(
                   itemUid: item['item_uid'],
-                )));
+                ))
+              );
             },
           );
         },

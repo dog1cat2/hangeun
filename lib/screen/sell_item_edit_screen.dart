@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class SellItemEditScreen extends StatelessWidget {
   String itemUid;
+
   SellItemEditScreen({
     required this.itemUid,
     Key? key,
@@ -9,21 +10,14 @@ class SellItemEditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('edit itemUid -> ${itemUid}');
+    print(itemUid.isEmpty);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('상세 보기'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: () {
-              // save
-              // go back
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
+        title: const Text('매물 등록/수정'),
       ),
-      body: DetailForm(),
+      body: SingleChildScrollView(child: DetailForm()),
     );
   }
 }
@@ -46,56 +40,80 @@ class _DetailFormState extends State<DetailForm> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // image view
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '제목(필수)을 입력해 주세요',
-              labelText: '제목 *'
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: '제목(필수)을 입력해 주세요',
+                labelText: '제목 *'
+              ),
+              onSaved: (val) {},
+              validator: (val) {
+                return null;
+              },
             ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '가격(필수)을 입력해 주세요',
-              labelText: '가격 *'
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: '가격(필수)을 입력해 주세요',
+                labelText: '가격 *'
+              ),
+              onSaved: (val) {},
+              validator: (val) {
+                return null;
+              },
             ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '거래사업장(필수)를 선택해 주세요',
-              labelText: '거래사업장 *'
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: '거래사업장(필수)를 선택해 주세요',
+                labelText: '거래사업장 *'
+              ),
+              onSaved: (val) {},
+              validator: (val) {
+                return null;
+              },
             ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '키워드(필수)를 입력해 주세요',
-              labelText: '키워드 *'
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextFormField(
+              decoration: const InputDecoration(
+                hintText: '키워드(필수)를 입력해 주세요',
+                labelText: '키워드 *'
+              ),
+              onSaved: (val) {},
+              validator: (val) {
+                return null;
+              },
             ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
           ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '매물 상세 내역을 입력해 주세요',
-              labelText: '상세'
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: TextField(
+              // input
+              decoration: const InputDecoration(
+                hintText: '매물 상세 내역을 입력해 주세요',
+                labelText: '상세'
+              ),
             ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
           ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Container(
+              child: ElevatedButton(
+                onPressed: () {
+                  print('ElevatedButton 저장 pressed');
+                },
+                child: Text('저장'),
+              ),
+            ),
+          ),
+
         ]
       ),
     );
