@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/layout/main_layout.dart';
-import 'package:myapp/screen/detail_item_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -17,9 +16,9 @@ class SettingScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => DetailItemScreen()),
-                );
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (_) => SellItemScreen()),
+                // );
               },
               child: Text(
                 'SettingScreen'

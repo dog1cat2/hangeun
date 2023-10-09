@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/layout/main_layout.dart';
-import 'package:myapp/screen/detail_item_screen.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final arguments = ModalRoute.of(context)!.settings.arguments;
+    print('arguments -> ${arguments}');
+
     return MainLayout(
       title: '채팅',
       body: Padding(
@@ -17,9 +19,9 @@ class ChatScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => DetailItemScreen()),
-                );
+                // Navigator.of(context).push(
+                //     MaterialPageRoute(builder: (_) => SellItemScreen()),
+                // );
               },
               child: Text(
                 'ChatScreen'

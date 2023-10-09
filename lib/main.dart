@@ -2,21 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:myapp/utils.dart';
-import 'package:myapp/page-1/f-.dart';
-// import 'package:myapp/page-1/f--Epq.dart';
-// import 'package:myapp/page-1/f003-.dart';
-// import 'package:myapp/page-1/f003--RWH.dart';
-import 'package:myapp/page-1/favorite.dart';
-// import 'package:myapp/page-1/f009-.dart';
-import 'package:myapp/page-1/chat.dart';
-// import 'package:myapp/page-1/f006-.dart';
-// import 'package:myapp/page-1/f005-.dart';
-// import 'package:myapp/page-1/-pRX.dart';
-import 'package:myapp/page-1/f004-.dart';
-// import 'package:myapp/page-1/-7fo.dart';
-// import 'package:myapp/page-1/f002-.dart';
-// import 'package:myapp/page-1/f001-.dart';
-// import 'package:myapp/page-1/components-menupop.dart';
+
+import 'package:myapp/screen/chat_screen.dart';
+import 'package:myapp/screen/favorite_screen.dart';
+import 'package:myapp/screen/sell_item_screen.dart';
+import 'package:myapp/screen/sell_list_screen.dart';
+import 'package:myapp/screen/setting_screen.dart';
+
 
 void main() => runApp(const MyApp());
 
@@ -30,13 +22,19 @@ class MyApp extends StatelessWidget {
     double ffem = fem * 0.97;
 
     return MaterialApp(
-      title: 'Flutter',
+      title: '한솔 근처',
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        // primaryColor: const Color(0xff0E86CA),
       ),
       home: const ScaffoldPageContainer(),
+      routes: {
+        '/chat' : (context) => ChatScreen(),
+        '/setting' : (context) => SettingScreen(),
+        '/favorite': (context) => FavoriteScreen(),
+      },
     );
   }
 }
@@ -58,26 +56,26 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
     double ffem = fem * 0.97;
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xffffffff),
-        toolbarHeight: 24 * fem,
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarIconBrightness: Brightness.light,
-          statusBarColor: Colors.transparent,
-        ),
-        actions: <Widget>[
-          Container(
-            margin: EdgeInsets.fromLTRB(7 * fem, 7 * fem, 16 * fem, 7 * fem),
-            child: Image.asset(
-              'assets/page-1/images/combined-shape-cim.png',
-              width: 46 * fem,
-              height: 10 * fem,
-            ),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: const Color(0xffffffff),
+      //   toolbarHeight: 24 * fem,
+      //   elevation: 0,
+      //   shadowColor: Colors.transparent,
+      //   systemOverlayStyle: const SystemUiOverlayStyle(
+      //     statusBarIconBrightness: Brightness.light,
+      //     statusBarColor: Colors.transparent,
+      //   ),
+      //   actions: <Widget>[
+      //     Container(
+      //       margin: EdgeInsets.fromLTRB(7 * fem, 7 * fem, 16 * fem, 7 * fem),
+      //       child: Image.asset(
+      //         'assets/page-1/images/combined-shape-cim.png',
+      //         width: 46 * fem,
+      //         height: 10 * fem,
+      //       ),
+      //     ),
+      //   ],
+      // ),
       // bottom navigation 선언
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -137,10 +135,10 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
         ],
       ),
       body: <Widget>[
-        const Home(),
-        const Chat(),
-        const Favorite(),
-        const Scene(),
+        const SellListScreen(),
+        const ChatScreen(),
+        const FavoriteScreen(),
+        const SettingScreen(),
       ][currentPageIndex],
     );
   }
