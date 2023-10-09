@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/layout/main_layout.dart';
 
 class SellItemScreen extends StatelessWidget {
   String itemUid;
+  Map item = {
+    'item_uid': '0',
+    'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰',
+    'sell_price': '3000000',
+    'office_name': '증미',
+    'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
+    'create_date': '2023.09.10',
+    'item_desc': '아? 아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰',
+  };
   SellItemScreen({
     required this.itemUid,
     Key? key,
@@ -12,10 +20,10 @@ class SellItemScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('상세 보기'),
+        title: const Text('매물 상세'),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.save),
+            icon: const Icon(Icons.menu),
             onPressed: () {
               // save
               // go back
@@ -24,80 +32,93 @@ class SellItemScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: DetailForm(),
-    );
-  }
-}
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Image.asset(
+                item['pic_file_path'],
+                height: 300,
+                width: double.infinity,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                item['item_title'],
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Container(
+              height: 80, // Adjust the height as needed
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () => {
+                        print('찜 클릭')
+                      },
+                      icon: Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
+                      // icon: Icon(Icons.favorite_border),
+                    ),
+                    Text(
+                      item['sell_price'] + ' 원',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add your button click logic here
+                        print('ElevatedButton pressed');
+                      },
+                      child: Text('대화하기'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                item['office_name'] + ' · ' + item['create_date'],
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            // Padding(
+            //   padding: EdgeInsets.all(10),
+            //   child: Text(
+            //     item['sell_price'] + ' 원',
+            //     style: const TextStyle(
+            //       fontSize: 16,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(
+                item['item_desc'],
+              ),
+            ),
+          ]
 
-class DetailForm extends StatefulWidget {
-  const DetailForm({super.key});
-
-  @override
-  State<DetailForm> createState() => _DetailFormState();
-}
-
-class _DetailFormState extends State<DetailForm> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // image view
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '제목(필수)을 입력해 주세요',
-              labelText: '제목 *'
-            ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '가격(필수)을 입력해 주세요',
-              labelText: '가격 *'
-            ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '거래사업장(필수)를 선택해 주세요',
-              labelText: '거래사업장 *'
-            ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '키워드(필수)를 입력해 주세요',
-              labelText: '키워드 *'
-            ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              hintText: '매물 상세 내역을 입력해 주세요',
-              labelText: '상세'
-            ),
-            onSaved: (val) {},
-            validator: (val) {
-              return null;
-            },
-          ),
-        ]
+        ),
       ),
     );
   }

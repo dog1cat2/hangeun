@@ -13,7 +13,7 @@ class SellListScreen extends StatelessWidget {
         'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
         'sell_price': '3000000',
         'office_name': '증미',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
+        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
         'create_date': '2023.09.10',
       },
       {
@@ -21,7 +21,7 @@ class SellListScreen extends StatelessWidget {
         'item_title': '매물 2 - xx',
         'sell_price': '1000',
         'office_name': '대전',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
+        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
         'create_date': '2023.10.10',
       },
       {
@@ -29,7 +29,7 @@ class SellListScreen extends StatelessWidget {
         'item_title': '매물 3',
         'sell_price': '110000',
         'office_name': '을지로',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
+        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
         'create_date': '2023.11.21',
       },
       {
@@ -37,7 +37,7 @@ class SellListScreen extends StatelessWidget {
         'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
         'sell_price': '3000000',
         'office_name': '증미',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
+        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
         'create_date': '2023.09.10',
       },
       {
