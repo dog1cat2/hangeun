@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class SellItemScreen extends StatelessWidget {
   String itemUid;
@@ -10,6 +11,12 @@ class SellItemScreen extends StatelessWidget {
     'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
     'create_date': '2023.09.10',
     'item_desc': '아? 아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰',
+    'imageSliders': [
+      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
+      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
+      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
+      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
+    ],
   };
   SellItemScreen({
     required this.itemUid,
@@ -37,13 +44,9 @@ class SellItemScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              child: Image.asset(
-                item['pic_file_path'],
-                height: 300,
-                width: double.infinity,
-                fit: BoxFit.fitWidth,
-              ),
+            CarouselSlider(
+              options: CarouselOptions(),
+              items: item['imageSliders'],
             ),
             Padding(
               padding: EdgeInsets.all(10),

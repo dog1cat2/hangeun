@@ -40,13 +40,47 @@ class _DetailFormState extends State<DetailForm> {
 
   @override
   Widget build(BuildContext context) {
-
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // image view
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Wrap(
+              direction: Axis.horizontal, // 나열 방향
+              alignment: WrapAlignment.start, // 정렬 방식
+              spacing: 5, // 좌우 간격
+              runSpacing: 5, // 상하 간격
+              children: [
+                Image.asset(
+                  'assets/images/rectangle-9-bg-tVP.png',
+                  height: 100,
+                  width: 100,
+                ),
+                Image.asset(
+                  'assets/images/rectangle-9-bg-tVP.png',
+                  height: 100,
+                  width: 100,
+                ),
+                Image.asset(
+                  'assets/images/rectangle-9-bg-tVP.png',
+                  height: 100,
+                  width: 100,
+                ),
+                Image.asset(
+                  'assets/images/rectangle-9-bg-tVP.png',
+                  height: 100,
+                  width: 100,
+                ),
+                Image.asset(
+                  'assets/images/rectangle-9-bg-tVP.png',
+                  height: 100,
+                  width: 100,
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.all(10),
             child: TextFormField(
