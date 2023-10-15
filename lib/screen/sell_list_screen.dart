@@ -214,7 +214,7 @@ class _SellListState  extends State<SellListScreen> {
             //   },
             // ),
             leading: const CircleAvatar(
-              foregroundImage: AssetImage('assets/images/rectangle-9-bg-tVP.png'),
+              foregroundImage: AssetImage('assets/images/bg.png'),
             ),
             onTap: () {
               Navigator.of(context).push( MaterialPageRoute(

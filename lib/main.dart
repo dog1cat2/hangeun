@@ -8,6 +8,7 @@ import 'package:myapp/screen/favorite_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
 import 'package:myapp/screen/sell_list_screen.dart';
 import 'package:myapp/screen/setting_screen.dart';
+import 'package:myapp/screen/login_screen.dart';
 
 
 void main() => runApp(const MyApp());
@@ -17,9 +18,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 360;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
 
     return MaterialApp(
       title: '한솔 근처',
@@ -30,10 +28,13 @@ class MyApp extends StatelessWidget {
         // primaryColor: const Color(0xff0E86CA),
       ),
       home: const ScaffoldPageContainer(),
+      initialRoute: '/login', // Initial route
       routes: {
+        // '/': (context) => const ScaffoldPageContainer(),
         '/chat' : (context) => ChatScreen(),
         '/setting' : (context) => SettingScreen(),
         '/favorite': (context) => FavoriteScreen(),
+        '/login': (context) => LoginScreen(),
       },
     );
   }

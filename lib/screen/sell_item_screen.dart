@@ -8,14 +8,14 @@ class SellItemScreen extends StatelessWidget {
     'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰',
     'sell_price': '3000000',
     'office_name': '증미',
-    'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
+    'pic_file_path': 'assets/images/bg.png',
     'create_date': '2023.09.10',
     'item_desc': '아? 아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰\n\n\n아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰아이폰',
     'imageSliders': [
-      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
-      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
-      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
-      Image.asset('assets/images/rectangle-9-bg-tVP.png'),
+      Image.asset('assets/images/bg.png'),
+      Image.asset('assets/images/bg.png'),
+      Image.asset('assets/images/bg.png'),
+      Image.asset('assets/images/bg.png'),
     ],
   };
   SellItemScreen({

@@ -55,22 +55,22 @@ class _DetailFormState extends State<DetailForm> {
               runSpacing: 5, // 상하 간격
               children: [
                 Image.asset(
-                  'assets/images/rectangle-9-bg-tVP.png',
+                  'assets/images/bg.png',
                   height: 100,
                   width: 100,
                 ),
                 Image.asset(
-                  'assets/images/rectangle-9-bg-tVP.png',
+                  'assets/images/bg.png',
                   height: 100,
                   width: 100,
                 ),
                 Image.asset(
-                  'assets/images/rectangle-9-bg-tVP.png',
+                  'assets/images/bg.png',
                   height: 100,
                   width: 100,
                 ),
                 Image.asset(
-                  'assets/images/rectangle-9-bg-tVP.png',
+                  'assets/images/bg.png',
                   height: 100,
                   width: 100,
                 ),
