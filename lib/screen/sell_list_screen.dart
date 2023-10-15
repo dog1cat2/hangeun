@@ -120,9 +120,16 @@ class _SellListState  extends State<SellListScreen> {
         itemCount: sellListMap.length,
         itemBuilder: (BuildContext context, int index) {
           final item = sellListMap[index];
+          // final List<Object> ListMenus = [
+          //   { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
+          //   { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
+          // ];
+          final ListMenus = [
+            { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
+            { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
+          ];
 
           return ListTile(
-
             title: Container(
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                 child: Row(
@@ -165,12 +172,47 @@ class _SellListState  extends State<SellListScreen> {
                   ],
                 ),
               ),
-            trailing: IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () => {
-                print('icon button pressed')
+            trailing: PopupMenuButton(
+              onSelected: (String action) {
+                print('selected -> ' + action);
+
+                if(action=='edit') {
+                  Navigator.of(context).push( MaterialPageRoute(
+                    builder: (context) => SellItemEditScreen(
+                      itemUid: '',
+                    ))
+                  );
+                }
+                else if(action=='delete') {
+                  //
+                }
+                // final snackBar = SnackBar(
+                //   content: Text("$result['text'] is selected."),
+                // );
+                // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              itemBuilder: (BuildContext buildContext) {
+                return [
+                  for (final item in ListMenus)
+                    PopupMenuItem(
+                      value: item['action'].toString(),
+                      child: Text(item['text'].toString()),
+                      // child: Row(
+                      //   children: [
+                      //     Icon(item['icon']),
+                      //     Text(item['text'].toString()),
+                      //   ]
+                      // ),
+                    )
+                ];
               },
             ),
+            // IconButton(
+            //   icon: const Icon(Icons.menu),
+            //   onPressed: () => {
+            //     print('icon button pressed')
+            //   },
+            // ),
             leading: const CircleAvatar(
               foregroundImage: AssetImage('assets/images/rectangle-9-bg-tVP.png'),
             ),

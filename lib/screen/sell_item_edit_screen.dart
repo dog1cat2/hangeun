@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screen/sell_list_screen.dart';
 
 class SellItemEditScreen extends StatelessWidget {
   String itemUid;
@@ -53,11 +54,6 @@ class _DetailFormState extends State<DetailForm> {
               spacing: 5, // 좌우 간격
               runSpacing: 5, // 상하 간격
               children: [
-                Image.asset(
-                  'assets/images/rectangle-9-bg-tVP.png',
-                  height: 100,
-                  width: 100,
-                ),
                 Image.asset(
                   'assets/images/rectangle-9-bg-tVP.png',
                   height: 100,
@@ -164,7 +160,29 @@ class _DetailFormState extends State<DetailForm> {
             child: Container(
               child: ElevatedButton(
                 onPressed: () {
-                  print('ElevatedButton 저장 pressed');
+                  showDialog<String>(
+                    context: context,
+                    builder: (BuildContext context) => AlertDialog(
+                      // title: const Text('AlertDialog Title'),
+                      content: Text('저장하시겠습니까?'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () => Navigator.pop(context, 'Cancel'),
+                          child: const Text('취소'),
+                        ),
+                        TextButton(
+                          onPressed: (){
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SellListScreen()
+                              )
+                            );
+                          },
+                          child: const Text('저장'),
+                        ),
+                      ],
+                    ),
+                  );
                 },
                 child: const Text('저장'),
               ),

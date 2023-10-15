@@ -44,9 +44,25 @@ class SellItemScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CarouselSlider(
-              options: CarouselOptions(),
-              items: item['imageSliders'],
+            SizedBox(
+              // height: 300,
+              child: Stack(
+                children: [
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 300,
+                      viewportFraction: 1.0,
+                      aspectRatio: 2.0,
+                      enlargeCenterPage: true,
+                      enableInfiniteScroll: false,
+                      // initialPage: 2,
+                      // autoPlay: true,
+                    ),
+                    items: item['imageSliders'],
+                  ),
+                  // indicator
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(10),
