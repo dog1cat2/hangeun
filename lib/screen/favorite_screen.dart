@@ -91,16 +91,8 @@ class _FavoriteState  extends State<FavoriteScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('매물 목록'),
+        title: const Text('찜 목록'),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              //
-            },
-          ),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

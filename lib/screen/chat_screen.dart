@@ -91,16 +91,8 @@ class _ChatState  extends State<ChatScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('매물 목록'),
+        title: const Text('채팅'),
         automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              //
-            },
-          ),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
