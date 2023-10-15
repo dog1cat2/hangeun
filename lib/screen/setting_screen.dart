@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screen/login_screen.dart';
+import 'package:myapp/screen/setting_edit_screen.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({super.key});
@@ -81,7 +82,11 @@ class SettingScreen extends StatelessWidget {
             title: const Text('사업장 변경'),
             leading: const Icon(Icons.place_outlined),
             onTap: () {
-              //
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SettingEditScreen()
+                )
+              );
             },
           ),
           ListTile (

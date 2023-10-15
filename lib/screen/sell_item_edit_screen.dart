@@ -189,7 +189,6 @@ class _DetailFormState extends State<DetailForm> {
               ),
             ),
           ),
-
         ]
       ),
     );
