@@ -92,6 +92,7 @@ class _SellListState  extends State<SellListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('매물 목록'),
+        automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),

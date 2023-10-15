@@ -52,10 +52,6 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
 
   @override
   Widget build(BuildContext context) {
-    double baseWidth = 360;
-    double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
-
     return Scaffold(
       // appBar: AppBar(
       //   backgroundColor: const Color(0xffffffff),

@@ -172,11 +172,12 @@ class _DetailFormState extends State<DetailForm> {
                         ),
                         TextButton(
                           onPressed: (){
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => SellListScreen()
-                              )
-                            );
+                            Navigator.of(context).pushNamed('/');
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) => SellListScreen()
+                            //   )
+                            // );
                           },
                           child: const Text('저장'),
                         ),
