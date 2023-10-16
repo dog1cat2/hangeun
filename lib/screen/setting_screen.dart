@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screen/login_screen.dart';
+import 'package:myapp/screen/my_buy_screen.dart';
+import 'package:myapp/screen/my_sell_screen.dart';
 import 'package:myapp/screen/setting_edit_screen.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -59,17 +61,25 @@ class SettingScreen extends StatelessWidget {
           ),
           const Padding(padding: EdgeInsets.only(top: 10)),
           ListTile(
-            title: const Text('판매목록'),
+            title: const Text('판매 목록'),
             leading: const Icon(Icons.sell),
             onTap: () {
-              //
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MySellScreen()
+                )
+              );
             },
           ),
           ListTile(
-            title: const Text('구매목록'),
+            title: const Text('구매 목록'),
             leading: const Icon(Icons.shopping_cart),
             onTap: () {
-              //
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MyBuyScreen()
+                )
+              );
             },
           ),
           const Padding(padding: EdgeInsets.only(top: 10)),
