@@ -10,7 +10,6 @@ import 'package:myapp/screen/sell_list_screen.dart';
 import 'package:myapp/screen/setting_screen.dart';
 import 'package:myapp/screen/login_screen.dart';
 
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,21 +17,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       title: '한솔 근처',
       debugShowCheckedModeBanner: false,
       scrollBehavior: MyCustomScrollBehavior(),
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepOrange,
         // primaryColor: const Color(0xff0E86CA),
       ),
       home: const ScaffoldPageContainer(),
       initialRoute: '/login', // Initial route
       routes: {
         // '/': (context) => const ScaffoldPageContainer(),
-        '/chat' : (context) => ChatScreen(),
-        '/setting' : (context) => SettingScreen(),
+        '/chat': (context) => ChatScreen(),
+        '/setting': (context) => SettingScreen(),
         '/favorite': (context) => FavoriteScreen(),
         '/login': (context) => LoginScreen(),
       },
@@ -86,7 +84,7 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
           NavigationDestination(
             selectedIcon: ImageIcon(
               AssetImage('assets/page-1/images/icon-ic-home-active-ySH.png'),
-              color: Color(0xffea1818),
+              color: Colors.deepOrange,
             ),
             icon: ImageIcon(
               AssetImage('assets/page-1/images/icon-ic-home.png'),
@@ -98,7 +96,7 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
             selectedIcon: ImageIcon(
               AssetImage(
                   'assets/page-1/images/icon-ic-message-circle-outline-active.png'),
-              color: Color(0xffea1818),
+              color: Colors.deepOrange,
             ),
             icon: ImageIcon(
               AssetImage(
@@ -110,7 +108,7 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
           NavigationDestination(
             selectedIcon: ImageIcon(
               AssetImage('assets/page-1/images/icon-ic-heart-active.png'),
-              color: Color(0xffea1818),
+              color: Colors.deepOrange,
             ),
             icon: ImageIcon(
               AssetImage('assets/page-1/images/icon-ic-heart.png'),
@@ -121,7 +119,7 @@ class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
           NavigationDestination(
             selectedIcon: ImageIcon(
               AssetImage('assets/page-1/images/account-JvV.png'),
-              color: Color(0xffea1818),
+              color: Colors.deepOrange,
             ),
             icon: ImageIcon(
               AssetImage('assets/page-1/images/account.png'),
