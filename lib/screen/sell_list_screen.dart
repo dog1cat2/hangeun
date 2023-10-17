@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
+
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
 
@@ -88,6 +90,12 @@ class _SellListState  extends State<SellListScreen> {
         'create_date': '2023.11.21',
       },
     ];
+    void _callAPI() async {
+      final dio = Dio();
+      final response = await dio.get('https://raw.githubusercontent.com/dev-yakuza/users/master/api.json');
+      print('Response status: ${response.statusCode}');
+    }
+    _callAPI();
 
     return Scaffold(
       appBar: AppBar(
