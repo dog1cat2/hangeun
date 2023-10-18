@@ -1,19 +1,17 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
 
-class SellListScreen extends StatefulWidget {
-  const SellListScreen({super.key});
+class SellSearchListScreen extends StatefulWidget {
+  const SellSearchListScreen({super.key});
 
   @override
-  State<SellListScreen> createState() => _SellListState();
+  State<SellSearchListScreen> createState() => _SellSearchListState();
 }
 
-class _SellListState  extends State<SellListScreen> {
+class _SellSearchListState  extends State<SellSearchListScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -92,23 +90,13 @@ class _SellListState  extends State<SellListScreen> {
         'create_date': '2023.11.21',
       },
     ];
-    // void _callAPI() async {
-    //   final dio = Dio();
-    //   final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
-    //   final jsonBody = json.decode(response.data);
-    //   print('Response : ${response.statusCode}');
-    //   print('Response : ${jsonBody.body}');
-    // }
-    void fetchData() {
+    void _callAPI() async {
       final dio = Dio();
-      dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/').then((response) {
-        print(response.data); // Print the response data
-        print(json.decode(response.data));
-      }).catchError((error) {
-        print('Error: $error');
-      });
+      // final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
+      final response = await dio.get('https://raw.githubusercontent.com/dev-yakuza/users/master/api.json');
+      print('Response : ${response.toString()}');
     }
-    fetchData();
+    _callAPI();
 
     return Scaffold(
       appBar: AppBar(
