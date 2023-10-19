@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
+import 'package:myapp/screen/sell_search_list_screen.dart';
 
 class SellListScreen extends StatefulWidget {
   const SellListScreen({super.key});
@@ -106,7 +107,7 @@ class _SellListState  extends State<SellListScreen> {
       final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
       print(response.data['body']);
     }
-    fetchData();
+    // fetchData();
 
     return Scaffold(
       appBar: AppBar(
@@ -116,7 +117,11 @@ class _SellListState  extends State<SellListScreen> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              //
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => SellSearchListScreen(),
+                )
+              );
             },
           ),
         ],
@@ -194,8 +199,7 @@ class _SellListState  extends State<SellListScreen> {
               ),
             trailing: PopupMenuButton(
               onSelected: (String action) {
-                print('selected -> ' + action);
-
+                // print('selected -> ' + action);
                 if(action=='edit') {
                   Navigator.of(context).push( MaterialPageRoute(
                     builder: (context) => SellItemEditScreen(

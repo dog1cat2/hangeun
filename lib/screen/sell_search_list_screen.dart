@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
+import 'package:myapp/screen/sell_list_screen.dart';
 
 class SellSearchListScreen extends StatefulWidget {
   const SellSearchListScreen({super.key});
@@ -25,83 +26,34 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
         'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
         'create_date': '2023.09.10',
       },
-      {
-        'item_uid': '1',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.11.21',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.09.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.11.21',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.09.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.11.21',
-      },
     ];
-    void _callAPI() async {
-      final dio = Dio();
-      // final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
-      final response = await dio.get('https://raw.githubusercontent.com/dev-yakuza/users/master/api.json');
-      print('Response : ${response.toString()}');
-    }
-    _callAPI();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('매물 목록'),
-        automaticallyImplyLeading: false,
+        title: const Expanded(
+          child: TextField(
+            style: TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
+            decoration: InputDecoration(
+              hintText: '검색어를 입력해 주세요',
+              hintStyle: TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              // border: OutlineInputBorder(
+              //   borderRadius: BorderRadius.all(Radius.circular(8),),
+              // ),
+              // focusedBorder: OutlineInputBorder(
+              //   borderSide: BorderSide(color: Color.fromARGB(255, 216, 216, 216)), // White border when focused
+              // ),
+              // enabledBorder: OutlineInputBorder(
+              //   borderSide: BorderSide(color: Color.fromARGB(255, 216, 216, 216)), // White border when not focused
+              // ),
+              contentPadding: EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 16,
+              ),
+            ),
+          ),
+        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),

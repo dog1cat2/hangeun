@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screen/sell_list_screen.dart';
 
 class SellItemEditScreen extends StatelessWidget {
   String itemUid;
