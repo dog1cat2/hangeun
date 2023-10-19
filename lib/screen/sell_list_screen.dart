@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -99,14 +101,10 @@ class _SellListState  extends State<SellListScreen> {
     //   print('Response : ${response.statusCode}');
     //   print('Response : ${jsonBody.body}');
     // }
-    void fetchData() {
+    void fetchData() async {
       final dio = Dio();
-      dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/').then((response) {
-        print(response.data); // Print the response data
-        print(json.decode(response.data));
-      }).catchError((error) {
-        print('Error: $error');
-      });
+      final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
+      print(response.data['body']);
     }
     fetchData();
 
