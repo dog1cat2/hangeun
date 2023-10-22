@@ -1,16 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:google_api_availability/google_api_availability.dart';
+import 'package:logger/logger.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import 'package:myapp/utils.dart';
 
 import 'package:myapp/screen/chat_screen.dart';
 import 'package:myapp/screen/favorite_screen.dart';
-import 'package:myapp/screen/sell_item_screen.dart';
 import 'package:myapp/screen/sell_list_screen.dart';
 import 'package:myapp/screen/setting_screen.dart';
 import 'package:myapp/screen/login_screen.dart';
 
-void main() => runApp(const MyApp());
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Logger logger = Logger();
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>()
+      ?.requestNotificationsPermission();
+
+  await GoogleApiAvailability.instance.checkGooglePlayServicesAvailability();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  String? token = await FirebaseMessaging.instance.getToken(
+      vapidKey:
+          "BFrcrelKHzKJxBYHgmTCTwtbe1WIYb7PP3mHmbKvi09jS3IAK72CyO8JtoF65uPQNzy5HveUlO9X7py55xlSic8");
+
+  logger.log(Level.info, token);
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    logger.log(Level.debug, 'Got a message whilst in the foreground!');
+    logger.log(Level.debug, 'Message data: ${message.data}');
+
+    if (message.notification != null) {
+      logger.log(Level.debug,
+          'Message also contained a notification: ${message.notification}');
+    }
+  });
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  runApp(const MyApp());
+}
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  Logger logger = Logger();
+  logger.log(Level.debug, "Handling a background message: ${message.data}");
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -47,6 +98,7 @@ class ScaffoldPageContainer extends StatefulWidget {
 
 class _ScaffoldPageContainerState extends State<ScaffoldPageContainer> {
   int currentPageIndex = 0;
+  Logger logger = Logger();
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screen/sell_item_edit_screen.dart';
-import 'package:myapp/screen/sell_item_screen.dart';
+import 'package:myapp/screen/chat_item_screen.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -9,11 +9,9 @@ class ChatScreen extends StatefulWidget {
   State<ChatScreen> createState() => _ChatState();
 }
 
-class _ChatState  extends State<ChatScreen> {
-
+class _ChatState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
-
     final List<Map<String, dynamic>> sellListMap = [
       {
         'item_uid': '0',
@@ -94,21 +92,6 @@ class _ChatState  extends State<ChatScreen> {
         title: const Text('채팅'),
         automaticallyImplyLeading: false,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SellItemEditScreen(
-                itemUid: '',
-              ))
-            );
-          });
-        },
-        // foregroundColor: customizations[index].$1,
-        // backgroundColor: customizations[index].$2,
-        // shape: customizations[index].$3,
-        child: const Icon(Icons.add),
-      ),
       body: ListView.separated(
         itemCount: sellListMap.length,
         itemBuilder: (BuildContext context, int index) {
@@ -117,104 +100,88 @@ class _ChatState  extends State<ChatScreen> {
           //   { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
           //   { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
           // ];
-          final ListMenus = [
-            { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
-            { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
+          final list_menus = [
+            {'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
+            {
+              'action': 'delete',
+              'icon': Icons.mode_edit_outlined,
+              'text': '삭제'
+            },
           ];
 
           return ListTile(
             title: Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item['item_title'],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff000000),
-                            ),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['item_title'],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff000000),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            item['office_name'] + ' · ' + item['create_date'],
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff221f1f),
-                            ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          item['office_name'] + ' · ' + item['create_date'],
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff221f1f),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            item['sell_price'] + ' 원',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff221f1f),
-                            ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          item['sell_price'] + ' 원',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff221f1f),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
             trailing: PopupMenuButton(
               onSelected: (String action) {
-                print('selected -> ' + action);
-
-                if(action=='edit') {
-                  Navigator.of(context).push( MaterialPageRoute(
-                    builder: (context) => SellItemEditScreen(
-                      itemUid: '',
-                    ))
-                  );
-                }
-                else if(action=='delete') {
+                if (action == 'edit') {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SellItemEditScreen(
+                            itemUid: '',
+                          )));
+                } else if (action == 'delete') {
                   //
                 }
-                // final snackBar = SnackBar(
-                //   content: Text("$result['text'] is selected."),
-                // );
-                // ScaffoldMessenger.of(context).showSnackBar(snackBar);
               },
               itemBuilder: (BuildContext buildContext) {
                 return [
-                  for (final item in ListMenus)
+                  for (final item in list_menus)
                     PopupMenuItem(
                       value: item['action'].toString(),
                       child: Text(item['text'].toString()),
-                      // child: Row(
-                      //   children: [
-                      //     Icon(item['icon']),
-                      //     Text(item['text'].toString()),
-                      //   ]
-                      // ),
                     )
                 ];
               },
             ),
-            // IconButton(
-            //   icon: const Icon(Icons.menu),
-            //   onPressed: () => {
-            //     print('icon button pressed')
-            //   },
-            // ),
             leading: const CircleAvatar(
               foregroundImage: AssetImage('assets/images/bg.png'),
             ),
             onTap: () {
-              Navigator.of(context).push( MaterialPageRoute(
-                builder: (context) => SellItemScreen(
-                  itemUid: item['item_uid'],
-                ))
-              );
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ChatItemScreen(
+                        userUid: '111',
+                        itemUid: item['item_uid'],
+                      )));
             },
           );
         },
