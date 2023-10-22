@@ -46,6 +46,12 @@ dependencies:
   # web socket lib
   web_socket_channel: ^2.4.0
 
+  # firebase cloud messaging
+  firebase_core: ^2.19.0
+  firebase_messaging: ^14.7.1
+  google_api_availability: ^5.0.0
+  flutter_local_notifications: ^16.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

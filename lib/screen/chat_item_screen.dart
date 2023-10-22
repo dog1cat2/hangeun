@@ -21,8 +21,7 @@ class ChatItemScreen extends StatefulWidget {
 class _ChatItemScreenState extends State<ChatItemScreen> {
   final TextEditingController txtController = TextEditingController();
   final WebSocketClient client = WebSocketClient();
-
-  Logger logger = Logger();
+  final Logger logger = Logger();
 
   final List<ChatMessage> messages = [
     ChatMessage(messageContent: "안녕하세요", messageType: "receiver"),
@@ -31,7 +30,8 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
     ChatMessage(messageContent: "가능합니다~", messageType: "sender"),
   ];
 
-  _ChatItemScreenState() {
+  @override
+  void initState() {
     client.setListener((data) {
       setState(() {
         messages
@@ -40,6 +40,8 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
         //logger.log(Level.info, data);
       });
     });
+
+    super.initState();
   }
 
   @override
