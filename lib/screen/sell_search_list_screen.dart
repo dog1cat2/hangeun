@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'dart:convert';
 
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
-import 'package:myapp/screen/sell_list_screen.dart';
 
 class SellSearchListScreen extends StatefulWidget {
   const SellSearchListScreen({super.key});
@@ -13,75 +13,72 @@ class SellSearchListScreen extends StatefulWidget {
 }
 
 class _SellSearchListState  extends State<SellSearchListScreen> {
+  final TextEditingController _textController = TextEditingController();
+
+  @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  void clearText() {
+    _textController.clear();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  List<dynamic> sellList = [];
+
+  Future<void> fetchData() async {
+    final dio = Dio();
+    final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/item?keyword=test');
+    if (response.statusCode == 200) {
+    final jsonBody = json.decode(response.data['body']);
+      setState(() {
+        sellList = jsonBody['data'];
+        print(sellList);
+      });
+    } else {
+      throw Exception('Failed to load data from the API');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    final List<Map<String, dynamic>> sellListMap = [
-      {
-        'item_uid': '0',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.09.10',
-      },
-    ];
-
     return Scaffold(
       appBar: AppBar(
-        title: const Expanded(
-          child: TextField(
-            style: TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
+        title: TextField(
+            controller: _textController,
+            style: const TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
             decoration: InputDecoration(
               hintText: '검색어를 입력해 주세요',
-              hintStyle: TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
+              hintStyle: const TextStyle(color: Color.fromARGB(255, 216, 216, 216)),
               border: InputBorder.none,
               focusedBorder: InputBorder.none,
-              // border: OutlineInputBorder(
-              //   borderRadius: BorderRadius.all(Radius.circular(8),),
-              // ),
-              // focusedBorder: OutlineInputBorder(
-              //   borderSide: BorderSide(color: Color.fromARGB(255, 216, 216, 216)), // White border when focused
-              // ),
-              // enabledBorder: OutlineInputBorder(
-              //   borderSide: BorderSide(color: Color.fromARGB(255, 216, 216, 216)), // White border when not focused
-              // ),
-              contentPadding: EdgeInsets.symmetric(
-                vertical: 8,
-                horizontal: 16,
+              suffixIcon: IconButton(
+                icon: const Icon(Icons.clear),
+                onPressed: clearText,
               ),
+              suffixIconColor: const Color.fromARGB(255, 216, 216, 216),
             ),
           ),
-        ),
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              //
+              fetchData();
             },
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SellItemEditScreen(
-                itemUid: '',
-              ))
-            );
-          });
-        },
-        // foregroundColor: customizations[index].$1,
-        // backgroundColor: customizations[index].$2,
-        // shape: customizations[index].$3,
-        child: const Icon(Icons.add),
-      ),
       body: ListView.separated(
-        itemCount: sellListMap.length,
+        itemCount: sellList.length,
         itemBuilder: (BuildContext context, int index) {
-          final item = sellListMap[index];
+          final item = sellList[index];
           // final List<Object> ListMenus = [
           //   { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
           //   { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
@@ -103,7 +100,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            item['item_title'],
+                            item['ITEM_TITLE'],
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -112,7 +109,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['office_name'] + ' · ' + item['create_date'],
+                            item['OFFICE_NAME'] + ' · ' + item['ITEM_UPLOAD_DT'],
                             style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
@@ -121,7 +118,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['sell_price'] + ' 원',
+                            item['SELL_PRICE'].toString() + ' 원',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -141,7 +138,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
                 if(action=='edit') {
                   Navigator.of(context).push( MaterialPageRoute(
                     builder: (context) => SellItemEditScreen(
-                      itemUid: '',
+                      itemUid: item['ITEM_UID'],
                     ))
                   );
                 }
@@ -155,16 +152,10 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
               },
               itemBuilder: (BuildContext buildContext) {
                 return [
-                  for (final item in ListMenus)
+                  for (final menu in ListMenus)
                     PopupMenuItem(
-                      value: item['action'].toString(),
-                      child: Text(item['text'].toString()),
-                      // child: Row(
-                      //   children: [
-                      //     Icon(item['icon']),
-                      //     Text(item['text'].toString()),
-                      //   ]
-                      // ),
+                      value: menu['action'].toString(),
+                      child: Text(menu['text'].toString()),
                     )
                 ];
               },
@@ -181,7 +172,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
             onTap: () {
               Navigator.of(context).push( MaterialPageRoute(
                 builder: (context) => SellItemScreen(
-                  itemUid: item['item_uid'],
+                  itemUid: item['ITEM_UID'],
                 ))
               );
             },

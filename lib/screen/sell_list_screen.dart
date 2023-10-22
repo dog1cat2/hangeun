@@ -17,98 +17,29 @@ class SellListScreen extends StatefulWidget {
 }
 
 class _SellListState  extends State<SellListScreen> {
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  List<dynamic> sellList = [];
+
+  Future<void> fetchData() async {
+    final dio = Dio();
+    final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/item/');
+    if (response.statusCode == 200) {
+    final jsonBody = json.decode(response.data['body']);
+      setState(() {
+        sellList = jsonBody['data'];
+      });
+    } else {
+      throw Exception('Failed to load data from the API');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    final List<Map<String, dynamic>> sellListMap = [
-      {
-        'item_uid': '0',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.09.10',
-      },
-      {
-        'item_uid': '1',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.11.21',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/rectangle-9-bg-tVP.png',
-        'create_date': '2023.09.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.11.21',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 1 - 아이폰아이폰아이폰아이폰아이폰아이폰',
-        'sell_price': '3000000',
-        'office_name': '증미',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.09.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 2 - xx',
-        'sell_price': '1000',
-        'office_name': '대전',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.10.10',
-      },
-      {
-        'item_uid': '2',
-        'item_title': '매물 3',
-        'sell_price': '110000',
-        'office_name': '을지로',
-        'pic_file_path': 'assets/images/icon-ic-more-XRT.png',
-        'create_date': '2023.11.21',
-      },
-    ];
-    // void _callAPI() async {
-    //   final dio = Dio();
-    //   final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
-    //   final jsonBody = json.decode(response.data);
-    //   print('Response : ${response.statusCode}');
-    //   print('Response : ${jsonBody.body}');
-    // }
-    void fetchData() async {
-      final dio = Dio();
-      final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/');
-      print(response.data['body']);
-    }
-    // fetchData();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('매물 목록'),
@@ -142,9 +73,9 @@ class _SellListState  extends State<SellListScreen> {
         child: const Icon(Icons.add),
       ),
       body: ListView.separated(
-        itemCount: sellListMap.length,
+        itemCount: sellList.length,
         itemBuilder: (BuildContext context, int index) {
-          final item = sellListMap[index];
+          final item = sellList[index];
           // final List<Object> ListMenus = [
           //   { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
           //   { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
@@ -166,7 +97,7 @@ class _SellListState  extends State<SellListScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            item['item_title'],
+                            item['ITEM_TITLE'],
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -175,7 +106,7 @@ class _SellListState  extends State<SellListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['office_name'] + ' · ' + item['create_date'],
+                            item['OFFICE_NAME'] + ' · ' + item['ITEM_UPLOAD_DT'],
                             style: const TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
@@ -184,7 +115,7 @@ class _SellListState  extends State<SellListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['sell_price'] + ' 원',
+                            item['SELL_PRICE'].toString() + ' 원',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
@@ -203,7 +134,7 @@ class _SellListState  extends State<SellListScreen> {
                 if(action=='edit') {
                   Navigator.of(context).push( MaterialPageRoute(
                     builder: (context) => SellItemEditScreen(
-                      itemUid: '',
+                      itemUid: item['ITEM_UID'],
                     ))
                   );
                 }
@@ -217,14 +148,14 @@ class _SellListState  extends State<SellListScreen> {
               },
               itemBuilder: (BuildContext buildContext) {
                 return [
-                  for (final item in ListMenus)
+                  for (final menu in ListMenus)
                     PopupMenuItem(
-                      value: item['action'].toString(),
-                      child: Text(item['text'].toString()),
+                      value: menu['action'].toString(),
+                      child: Text(menu['text'].toString()),
                       // child: Row(
                       //   children: [
-                      //     Icon(item['icon']),
-                      //     Text(item['text'].toString()),
+                      //     Icon(menu['icon']),
+                      //     Text(menu['text'].toString()),
                       //   ]
                       // ),
                     )
@@ -243,7 +174,7 @@ class _SellListState  extends State<SellListScreen> {
             onTap: () {
               Navigator.of(context).push( MaterialPageRoute(
                 builder: (context) => SellItemScreen(
-                  itemUid: item['item_uid'],
+                  itemUid: item['ITEM_UID'],
                 ))
               );
             },
