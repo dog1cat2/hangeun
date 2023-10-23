@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/sell_item_screen.dart';
@@ -49,6 +50,8 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var f = NumberFormat('###,###,###,###');
+
     return Scaffold(
       appBar: AppBar(
         title: TextField(
@@ -118,7 +121,7 @@ class _SellSearchListState  extends State<SellSearchListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['SELL_PRICE'].toString() + ' 원',
+                            f.format(item['SELL_PRICE']) + ' 원',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

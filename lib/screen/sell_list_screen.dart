@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -84,6 +85,7 @@ class _SellListState  extends State<SellListScreen> {
             { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
             { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
           ];
+          var f = NumberFormat('###,###,###,###');
 
           return ListTile(
             title: Container(
@@ -115,7 +117,7 @@ class _SellListState  extends State<SellListScreen> {
                           ),
                           const SizedBox(height: 6),
                           Text(
-                            item['SELL_PRICE'].toString() + ' 원',
+                            f.format(item['SELL_PRICE']) + ' 원',
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

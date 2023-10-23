@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 
 class SellItemScreen extends StatefulWidget {
   String itemUid;
@@ -25,6 +26,7 @@ class _SellItemState  extends State<SellItemScreen> {
     fetchData();
   }
 
+  var f = NumberFormat('###,###,###,###');
   Map<String, dynamic> item = {};
   var imageSliders = [
       Image.asset('assets/images/bg.png'),
@@ -123,7 +125,7 @@ class _SellItemState  extends State<SellItemScreen> {
                             // icon: Icon(Icons.favorite_border),
                           ),
                           Text(
-                            item['SELL_PRICE'].toString() + ' 원',
+                            f.format(item['SELL_PRICE']) + ' 원',
                             style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
