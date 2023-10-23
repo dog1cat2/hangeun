@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
+import 'package:myapp/screen/sell_item_edit_screen.dart';
+
 class SellItemScreen extends StatefulWidget {
   String itemUid;
 
@@ -49,16 +51,44 @@ class _SellItemState  extends State<SellItemScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final ListMenus = [
+      { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
+      { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('매물 상세'),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // save
-              // go back
-              Navigator.of(context).pop();
+          PopupMenuButton(
+            onSelected: (String action) {
+              // print('selected -> ' + action);
+              if(action=='edit') {
+                Navigator.of(context).push( MaterialPageRoute(
+                  builder: (context) => SellItemEditScreen(
+                    itemUid: item['ITEM_UID'],
+                  ))
+                );
+              }
+              else if(action=='delete') {
+                //
+              }
+            },
+            itemBuilder: (BuildContext buildContext) {
+              return [
+                for (final menu in ListMenus)
+                  PopupMenuItem(
+                    value: menu['action'].toString(),
+                    child: Text(menu['text'].toString()),
+                    // child: Row(
+                    //   children: [
+                    //     Icon(menu['icon']),
+                    //     Text(menu['text'].toString()),
+                    //   ]
+                    // ),
+                  )
+              ];
             },
           ),
         ],
