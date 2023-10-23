@@ -37,6 +37,9 @@ class _SellItemEditState extends State<SellItemEditScreen> {
   final _controllerTitle = new TextEditingController();
   final _controllerSellprice = new TextEditingController();
   final _controlleritemDesc = new TextEditingController();
+  final officeDropdownState = GlobalKey<FormFieldState>();
+  final keywordDropdownState = GlobalKey<FormFieldState>();
+
 
   Map<String, dynamic> item = {};
 
@@ -48,10 +51,12 @@ class _SellItemEditState extends State<SellItemEditScreen> {
     if (response.statusCode == 200) {
       setState(() {
         item = response.data['data'][0];
-        print('-----> item = ' + item.toString());
+        // print('-----> item = ' + item.toString());
         _controllerTitle.text = item['ITEM_TITLE'];
-        // _controllerSellprice.text = 1000000;
+        _controllerSellprice.text = item['SELL_PRICE'].toString();
         _controlleritemDesc.text = item['ITEM_DESC'];
+        keyword = item['KEYWORD']??'';
+        office = item['OFFICE']??'';
       });
     } else {
       throw Exception('Failed to load data from the API');
@@ -142,10 +147,10 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                   floatingLabelBehavior:
                                       FloatingLabelBehavior.always,
                                 ),
-                                // onSaved: (val) {
-                                //   print('price = $val');
-                                //   sellPrice = int.parse(val!);
-                                // },
+                                onSaved: (val) {
+                                  print('가격 = $val');
+                                  sellPrice = int.parse(val!);
+                                },
                                 // validator: (val) {
                                 //   // if(val!=null && val.length < 0) return '필수 필드입니다';
                                 //   return null;
@@ -155,14 +160,14 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: DropdownButtonFormField<String?>(
+                                value: keyword.isNotEmpty ? keyword : null,
                                 decoration: const InputDecoration(
                                   labelText: '키워드 *',
                                   hintText: '키워드(필수)를 선택해 주세요',
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
+                                  floatingLabelBehavior: FloatingLabelBehavior.always,
                                 ),
                                 onChanged: (String? newValue) {
-                                  print(newValue);
+                                    // keyword = newValue!;
                                 },
                                 items: (<String>[
                                   '휴대폰',
@@ -175,24 +180,25 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                     child: Text(i!),
                                   );
                                 }).toList(),
-                                // onSaved: (String? val) {
-                                //   print('키워드 = $val');
-                                //   // if(val!=null && val.length < 0) return '필수 필드입니다';
-                                //   keyword = val!;
-                                // },
+                                onSaved: (String? val) {
+                                  print('키워드 = $val');
+                                  // if(val!=null && val.length < 0) return '필수 필드입니다';
+                                  keyword = val!;
+                                },
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.all(10),
                               child: DropdownButtonFormField<String?>(
+                                value: office.isNotEmpty ? office : null,
                                 decoration: const InputDecoration(
                                   labelText: '거래사업장 *',
                                   hintText: '거래사업장(필수)를 선택해 주세요',
                                   floatingLabelBehavior:
                                       FloatingLabelBehavior.always,
                                 ),
-                                onChanged: (String? value) {
-                                  office = value!;
+                                onChanged: (String? newValue) {
+                                    // office = newValue!;
                                 },
                                 items: (<String>[
                                   '서울-증미 (본사)',
@@ -205,10 +211,10 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                     child: Text(i!),
                                   );
                                 }).toList(),
-                                // onSaved: (String? val) {
-                                //   print('거래사업장 = $val');
-                                //   office = val!;
-                                // },
+                                onSaved: (String? val) {
+                                  print('거래사업장 = $val');
+                                  office = val!;
+                                },
                               ),
                             ),
                             Padding(
@@ -221,10 +227,10 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.always,
                                     labelText: '상세'),
-                                // onSaved: (String? val) {
-                                //   print('상세 = $val');
-                                //   itemDesc = val!;
-                                // },
+                                onSaved: (String? val) {
+                                  print('상세 = $val');
+                                  itemDesc = val!;
+                                },
                               ),
                             ),
                             Padding(
@@ -240,9 +246,10 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                       'item_title': itemTitle,
                                       'sell_price': sellPrice,
                                       'item_desc': itemDesc,
-                                      'office': 'Seoul, Ulzi-ro',
+                                      'office': office,
                                       'keyword': keyword,
-                                      'uid': '111'
+                                      'uid': '111',
+                                      'item_uid': itemUid,
                                     };
                                     final dio = Dio();
                                     String url =
@@ -252,6 +259,8 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                         (response) => {
                                               Logger().log(Level.info, response)
                                             });
+
+                                    Navigator.of(context).pushNamed('/');
 
                                     // Navigator.of(context).pushNamed('/');
                                     // showDialog<String>(
