@@ -1,7 +1,6 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
-import 'package:myapp/screen/sell_item_edit_screen.dart';
 import 'package:myapp/screen/chat_item_screen.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -19,11 +18,13 @@ class _ChatState extends State<ChatScreen> {
         'USER': '늘어진 나무늘보',
         'OFFICE': '서울-증미 (본사)',
         'TALK': '거래 가능할까요?',
+        'item_uid': '111',
       },
       {
         'USER': '푸른 개미',
         'OFFICE': '서울-을지로',
         'TALK': '만원 할인해 드릴께요',
+        'item_uid': '111',
       },
     ];
 
