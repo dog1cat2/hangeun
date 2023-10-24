@@ -40,7 +40,6 @@ class _SellItemEditState extends State<SellItemEditScreen> {
   final officeDropdownState = GlobalKey<FormFieldState>();
   final keywordDropdownState = GlobalKey<FormFieldState>();
 
-
   Map<String, dynamic> item = {};
 
   Future<void> fetchData() async {
@@ -55,8 +54,8 @@ class _SellItemEditState extends State<SellItemEditScreen> {
         _controllerTitle.text = item['ITEM_TITLE'];
         _controllerSellprice.text = item['SELL_PRICE'].toString();
         _controlleritemDesc.text = item['ITEM_DESC'];
-        keyword = item['KEYWORD']??'';
-        office = item['OFFICE']??'';
+        keyword = item['KEYWORD'] ?? '';
+        office = item['OFFICE_NAME'] ?? '';
       });
     } else {
       throw Exception('Failed to load data from the API');
@@ -164,10 +163,11 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                 decoration: const InputDecoration(
                                   labelText: '키워드 *',
                                   hintText: '키워드(필수)를 선택해 주세요',
-                                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                                  floatingLabelBehavior:
+                                      FloatingLabelBehavior.always,
                                 ),
                                 onChanged: (String? newValue) {
-                                    // keyword = newValue!;
+                                  // keyword = newValue!;
                                 },
                                 items: (<String>[
                                   '휴대폰',
@@ -198,7 +198,7 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                       FloatingLabelBehavior.always,
                                 ),
                                 onChanged: (String? newValue) {
-                                    // office = newValue!;
+                                  // office = newValue!;
                                 },
                                 items: (<String>[
                                   '서울-증미 (본사)',
