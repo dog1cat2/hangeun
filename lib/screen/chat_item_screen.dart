@@ -23,12 +23,7 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
   final WebSocketClient client = WebSocketClient();
   final Logger logger = Logger();
 
-  final List<ChatMessage> messages = [
-    ChatMessage(messageContent: "안녕하세요", messageType: "receiver"),
-    ChatMessage(messageContent: "안녕하세요", messageType: "sender"),
-    ChatMessage(messageContent: "아이폰 거래 가능한가요?", messageType: "receiver"),
-    ChatMessage(messageContent: "가능합니다~", messageType: "sender"),
-  ];
+  final List<ChatMessage> messages = [];
 
   @override
   void initState() {
@@ -82,12 +77,12 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
                   Container(
                     // autogroupdvl1Puj (3ckhJHHWirW3L9qijndvL1)
                     margin: EdgeInsets.fromLTRB(
-                        140 * fem, 0 * fem, 21.99 * fem, 12 * fem),
+                        0 * fem, 0 * fem, 21.99 * fem, 12 * fem),
                     width: double.infinity,
                     child: Container(
                       // pagetitleKYV (I68:885;26:568)
                       margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 104.99 * fem, 0 * fem),
+                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
                       child: Text(
                         '늘어진 나무늘보',
                         textAlign: TextAlign.center,
@@ -251,7 +246,7 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
                     top: 5 * fem,
                     child: Align(
                       child: SizedBox(
-                        width: 83 * fem,
+                        width: 200 * fem,
                         height: 44 * fem,
                         child: Text(
                           '아이폰(미개봉)\n1,000,000원',
