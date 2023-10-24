@@ -17,7 +17,7 @@ class SellListScreen extends StatefulWidget {
   State<SellListScreen> createState() => _SellListState();
 }
 
-class _SellListState  extends State<SellListScreen> {
+class _SellListState extends State<SellListScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,9 +28,10 @@ class _SellListState  extends State<SellListScreen> {
 
   Future<void> fetchData() async {
     final dio = Dio();
-    final response = await dio.get('https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/item/');
+    final response = await dio.get(
+        'https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/item/');
     if (response.statusCode == 200) {
-    final jsonBody = json.decode(response.data['body']);
+      final jsonBody = json.decode(response.data['body']);
       setState(() {
         sellList = jsonBody['data'];
       });
@@ -49,11 +50,9 @@ class _SellListState  extends State<SellListScreen> {
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SellSearchListScreen(),
-                )
-              );
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => SellSearchListScreen(),
+              ));
             },
           ),
         ],
@@ -62,10 +61,9 @@ class _SellListState  extends State<SellListScreen> {
         onPressed: () {
           setState(() {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => SellItemEditScreen(
-                itemUid: '',
-              ))
-            );
+                builder: (context) => SellItemEditScreen(
+                      itemUid: '',
+                    )));
           });
         },
         // foregroundColor: customizations[index].$1,
@@ -82,65 +80,67 @@ class _SellListState  extends State<SellListScreen> {
           //   { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
           // ];
           final ListMenus = [
-            { 'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
-            { 'action': 'delete', 'icon': Icons.mode_edit_outlined, 'text': '삭제'},
+            {'action': 'edit', 'icon': Icons.delete, 'text': '수정'},
+            {
+              'action': 'delete',
+              'icon': Icons.mode_edit_outlined,
+              'text': '삭제'
+            },
           ];
           var f = NumberFormat('###,###,###,###');
 
           return ListTile(
             title: Container(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item['ITEM_TITLE'],
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff000000),
-                            ),
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          item['ITEM_TITLE'],
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff000000),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            item['OFFICE_NAME'] + ' · ' + item['ITEM_UPLOAD_DT'],
-                            style: const TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xff221f1f),
-                            ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          item['OFFICE_NAME'] + ' · ' + item['ITEM_UPLOAD_DT'],
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff221f1f),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            f.format(item['SELL_PRICE']) + ' 원',
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff221f1f),
-                            ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          f.format(item['SELL_PRICE']) + ' 원',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xff221f1f),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
+            ),
             trailing: PopupMenuButton(
               onSelected: (String action) {
                 // print('selected -> ' + action);
-                if(action=='edit') {
-                  Navigator.of(context).push( MaterialPageRoute(
-                    builder: (context) => SellItemEditScreen(
-                      itemUid: item['ITEM_UID'],
-                    ))
-                  );
-                }
-                else if(action=='delete') {
+                if (action == 'edit') {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SellItemEditScreen(
+                            itemUid: item['ITEM_UID'],
+                          )));
+                } else if (action == 'delete') {
                   //
                 }
                 // final snackBar = SnackBar(
@@ -170,15 +170,17 @@ class _SellListState  extends State<SellListScreen> {
             //     print('icon button pressed')
             //   },
             // ),
-            leading: const CircleAvatar(
-              foregroundImage: AssetImage('assets/images/bg.png'),
+            leading: CircleAvatar(
+              foregroundImage: AssetImage(item['PIC_FILE_PATH'] == null ||
+                      item['PIC_FILE_PATH'].toString().isEmpty
+                  ? 'assets/images/bg.png'
+                  : item['PIC_FILE_PATH']),
             ),
             onTap: () {
-              Navigator.of(context).push( MaterialPageRoute(
-                builder: (context) => SellItemScreen(
-                  itemUid: item['ITEM_UID'],
-                ))
-              );
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => SellItemScreen(
+                        itemUid: item['ITEM_UID'],
+                      )));
             },
           );
         },
