@@ -34,6 +34,7 @@ class _SellItemEditState extends State<SellItemEditScreen> {
   String keyword = '';
   int sellPrice = 0;
   String itemDesc = '';
+  String pic_path = '';
   final _controllerTitle = new TextEditingController();
   final _controllerSellprice = new TextEditingController();
   final _controlleritemDesc = new TextEditingController();
@@ -41,6 +42,7 @@ class _SellItemEditState extends State<SellItemEditScreen> {
   final keywordDropdownState = GlobalKey<FormFieldState>();
 
   Map<String, dynamic> item = {};
+  List<Widget> imageList = [];
 
   Future<void> fetchData() async {
     final dio = Dio();
@@ -56,6 +58,15 @@ class _SellItemEditState extends State<SellItemEditScreen> {
         _controlleritemDesc.text = item['ITEM_DESC'];
         keyword = item['KEYWORD'] ?? '';
         office = item['OFFICE_NAME'] ?? '';
+        pic_path = item['PIC_FILE_PATH'];
+        imageList = [
+          Image.asset(
+            item['PIC_FILE_PATH'],
+            height: 100,
+            width: 100,
+          )
+        ];
+        print('imageList -> ' + imageList.toString());
       });
     } else {
       throw Exception('Failed to load data from the API');
@@ -94,23 +105,7 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                                 alignment: WrapAlignment.start, // 정렬 방식
                                 spacing: 5, // 좌우 간격
                                 runSpacing: 5, // 상하 간격
-                                children: [
-                                  Image.asset(
-                                    'assets/images/bg.png',
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/iphone1.png',
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                  Image.asset(
-                                    'assets/images/iphone2.jpeg',
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                ],
+                                children: imageList,
                               ),
                             ),
                             Padding(
@@ -238,27 +233,28 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                               child: Container(
                                 child: ElevatedButton(
                                   onPressed: () {
-                                    if (!_formKey.currentState!.validate())
-                                      return;
+                                    // if (!_formKey.currentState!.validate())
+                                    //   return;
 
-                                    _formKey.currentState!.save();
-                                    Object params = {
-                                      'item_title': itemTitle,
-                                      'sell_price': sellPrice,
-                                      'item_desc': itemDesc,
-                                      'office': office,
-                                      'keyword': keyword,
-                                      'uid': '111',
-                                      'item_uid': itemUid,
-                                    };
-                                    final dio = Dio();
-                                    String url =
-                                        'https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/trade';
+                                    // _formKey.currentState!.save();
+                                    // Object params = {
+                                    //   'item_title': itemTitle,
+                                    //   'sell_price': sellPrice,
+                                    //   'item_desc': itemDesc,
+                                    //   'office': office,
+                                    //   'keyword': keyword,
+                                    //   'uid': '111',
+                                    //   'item_uid': itemUid,
+                                    //   'pic_path': pic_path,
+                                    // };
+                                    // final dio = Dio();
+                                    // String url =
+                                    //     'https://nxp9ph14ij.execute-api.ap-northeast-2.amazonaws.com/beta/trade';
 
-                                    dio.post(url, data: params).then(
-                                        (response) => {
-                                              Logger().log(Level.info, response)
-                                            });
+                                    // dio.post(url, data: params).then(
+                                    //     (response) => {
+                                    //           Logger().log(Level.info, response)
+                                    //         });
 
                                     Navigator.of(context).pushNamed('/');
 
