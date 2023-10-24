@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hangeuntest-dev-100350-authRole",
+      "UnauthRoleArn": "arn:aws:iam::228525850236:role/amplify-hangeuntest-dev-100350-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::228525850236:role/amplify-hangeuntest-dev-100350-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-hangeuntest-dev-100350-deployment",
+      "UnauthRoleName": "amplify-hangeuntest-dev-100350-unauthRole",
+      "StackName": "amplify-hangeuntest-dev-100350",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:228525850236:stack/amplify-hangeuntest-dev-100350/dd5c4e50-7076-11ee-9515-0287199b2b1c",
+      "AmplifyAppId": "ds9t1hpvk895x"
+    },
+    "categories": {
+      "auth": {
+        "hangeunteste374909a": {}
+      }
+    }
+  }
+}
