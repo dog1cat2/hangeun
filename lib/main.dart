@@ -19,38 +19,78 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Logger logger = Logger();
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    description:
+        'This channel is used for important notifications.', // description
+    importance: Importance.max,
+  );
+
+  await initFirebaseMessaging(channel);
+
+  runApp(const MyApp());
+}
+
+initFirebaseMessaging(AndroidNotificationChannel channel) async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  InitializationSettings initializationSettings = const InitializationSettings(
+      android: AndroidInitializationSettings('mipmap/ic_launcher'));
 
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
   flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
-      ?.requestNotificationsPermission();
+      ?.createNotificationChannel(channel);
 
-  await GoogleApiAvailability.instance.checkGooglePlayServicesAvailability();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FirebaseMessaging.instance.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
 
   String? token = await FirebaseMessaging.instance.getToken(
       vapidKey:
           "BFrcrelKHzKJxBYHgmTCTwtbe1WIYb7PP3mHmbKvi09jS3IAK72CyO8JtoF65uPQNzy5HveUlO9X7py55xlSic8");
 
+  Logger logger = Logger();
   logger.log(Level.info, token);
 
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    logger.log(Level.debug, 'Got a message whilst in the foreground!');
-    logger.log(Level.debug, 'Message data: ${message.data}');
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
 
-    if (message.notification != null) {
-      logger.log(Level.debug,
-          'Message also contained a notification: ${message.notification}');
+    // If `onMessage` is triggered with a notification, construct our own
+    // local notification to show to users using the created channel.
+    if (notification != null && android != null) {
+      flutterLocalNotificationsPlugin.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+              channelDescription: channel.description,
+              icon: android.smallIcon,
+              // other properties...
+            ),
+          ));
     }
   });
 
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  //FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  runApp(const MyApp());
+  await GoogleApiAvailability.instance.checkGooglePlayServicesAvailability();
 }
 
 @pragma('vm:entry-point')
