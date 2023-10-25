@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:logger/logger.dart';
 
@@ -72,6 +73,19 @@ class _SellItemEditState extends State<SellItemEditScreen> {
     }
   }
 
+  final ImagePicker _picker = ImagePicker();
+  XFile? _image;
+
+  Future<void> _pickImage() async {
+    final XFile? pickedImage =
+        await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      setState(() {
+        _image = pickedImage;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -99,12 +113,25 @@ class _SellItemEditState extends State<SellItemEditScreen> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.all(10),
-                              child: Wrap(
-                                direction: Axis.horizontal, // 나열 방향
-                                alignment: WrapAlignment.start, // 정렬 방식
-                                spacing: 5, // 좌우 간격
-                                runSpacing: 5, // 상하 간격
-                                children: imageList,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  imageList.length < 1
+                                      ? Text('이미지를 선택해주세요')
+                                      : Wrap(
+                                          direction: Axis.horizontal, // 나열 방향
+                                          alignment:
+                                              WrapAlignment.start, // 정렬 방식
+                                          spacing: 5, // 좌우 간격
+                                          runSpacing: 5, // 상하 간격
+                                          children: imageList,
+                                        ),
+                                  ElevatedButton(
+                                    onPressed: _pickImage,
+                                    child: Icon(Icons.add),
+                                  ),
+                                ],
                               ),
                             ),
                             Padding(
