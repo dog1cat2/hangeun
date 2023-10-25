@@ -88,13 +88,20 @@ class _ChatItemScreenState extends State<ChatItemScreen> {
                 ),
               ),
               Container(
-                width: 110,
+                width: 130,
                 padding: EdgeInsets.all(10),
                 child: DropdownButtonFormField<String?>(
                   value: '판매중',
                   onChanged: (String? newValue) {
                     // keyword = newValue!;
                   },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      // Apply a border here
+                      borderRadius: BorderRadius.circular(
+                          8.0), // Customize border radius as needed
+                    ),
+                  ),
                   items: (<String>['판매중', '예약중', '판매완료'])
                       .map<DropdownMenuItem<String?>>((String? i) {
                     return DropdownMenuItem<String?>(
