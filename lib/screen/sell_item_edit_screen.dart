@@ -66,7 +66,6 @@ class _SellItemEditState extends State<SellItemEditScreen> {
             width: 100,
           )
         ];
-        print('imageList -> ' + imageList.toString());
       });
     } else {
       throw Exception('Failed to load data from the API');
