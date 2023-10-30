@@ -11,19 +11,6 @@ run emulator
 프로젝트ROOT> flutter run
 ```
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 <br/>
 
 # 요구사항
@@ -47,12 +34,14 @@ samples, guidance on mobile development, and a full API reference.
 - Frontend : flutter (mobile app)
 
 - Backend : AWS Cloud Lamda
+- 
 - DB : AWS RDS MariaDB
 
 <br/>
 
 # Authors
-- [@salinokl](https://github.com/salinokl)
+- [@salinokl](https://github.com/salinokl) : DB, Backend
 
-- [@aaddan](https://github.com/aaddan)
-- [@devdubu](https://github.com/devdubu)
+- [@aaddan](https://github.com/aaddan) : Frontend
+
+- [@devdubu](https://github.com/devdubu) : AWS, auth
