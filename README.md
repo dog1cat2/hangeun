@@ -34,7 +34,7 @@ run emulator
 - Frontend : flutter (mobile app)
 
 - Backend : AWS Cloud Lamda
-- 
+
 - DB : AWS RDS MariaDB
 
 <br/>
