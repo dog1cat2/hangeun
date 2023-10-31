@@ -14,10 +14,14 @@ run emulator
 <br/>
 
 # 구현화면
-<img src="doc/image/screenshot1.png" width="400">
+![스크린샷1](doc/image/screenshot1.png)
+![스크린샷2](doc/image/screenshot2.png)
+![스크린샷3](doc/image/screenshot4.png)
+![스크린샷4](doc/image/screenshot5.png)
+<!-- <img src="doc/image/screenshot1.png" width="400">
 <img src="doc/image/screenshot2.png" width="400">
 <img src="doc/image/screenshot4.png" width="400">
-<img src="doc/image/screenshot5.png" width="400">
+<img src="doc/image/screenshot5.png" width="400"> -->
 
 <br/>
 
