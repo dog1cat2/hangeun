@@ -13,6 +13,14 @@ run emulator
 
 <br/>
 
+# 구현화면
+<img src="doc/image/screenshot1.png" width="400">
+<img src="doc/image/screenshot2.png" width="400">
+<img src="doc/image/screenshot4.png" width="400">
+<img src="doc/image/screenshot5.png" width="400">
+
+<br/>
+
 # 요구사항
 [상세보기](doc/request.md)
 
