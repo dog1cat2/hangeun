@@ -52,6 +52,11 @@ dependencies:
   google_api_availability: ^5.0.0
   flutter_local_notifications: ^16.1.0
   intl: ^0.18.1
+  amplify_flutter: ^1.4.1
+  amplify_core: ^1.0.0
+  amplify_analytics_pinpoint: ^1.0.0
+  amplify_auth_cognito: ^1.0.0
+  amplify_authenticator: ^1.4.2
 
 dev_dependencies:
   flutter_test:
