@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-hangeun-dev-145733-authRole",
+      "UnauthRoleArn": "arn:aws:iam::228525850236:role/amplify-hangeun-dev-145733-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::228525850236:role/amplify-hangeun-dev-145733-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-hangeun-dev-145733-deployment",
+      "UnauthRoleName": "amplify-hangeun-dev-145733-unauthRole",
+      "StackName": "amplify-hangeun-dev-145733",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:228525850236:stack/amplify-hangeun-dev-145733/8d933750-787b-11ee-b958-069283f90a62",
+      "AmplifyAppId": "d28otxtmcc68uy"
+    },
+    "categories": {
+      "auth": {
+        "hangeun015b4eb7": {}
+      }
+    }
+  }
+}
